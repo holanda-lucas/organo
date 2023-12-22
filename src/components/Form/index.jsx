@@ -5,21 +5,25 @@ import Button from '../Button';
 import { useState } from 'react';
 
 
-function Form() {
-
-    const teams = [
-        'Programação',
-        'Front-End',
-        'Data Science',
-        'DevOps',
-        'UX e Design',
-        'Mobile',
-        'Inovação e Gestão'
-    ]
+function Form(props) {
 
     const onSave = (ev) => {
         ev.preventDefault()
         console.log("Form foi submetido => ", name, job, image, team)
+
+        setName("")
+        setJob("")
+        setImage("")
+        setTeam("Programação")
+
+        const collaborator = {
+            name,
+            job,
+            image,
+            team
+        }
+
+        props.saveCollaborator(collaborator)
     }
 
     const [name, setName] = useState('')
@@ -54,7 +58,7 @@ function Form() {
                 />
 
                 <Select 
-                    itens = {teams} 
+                    itens = {props.teams} 
                     valueName = "Time"
                     value = {team}
                     onChangeTxt = {value => setTeam(value)}

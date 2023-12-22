@@ -11,7 +11,7 @@ function TextField (props) {
     return (
         <div className='text-field'>
             <label>{props.valueName}</label>
-            <input value={props.value} onChange={onChangeTxt} type="text" placeholder={props.valueDesc}/>
+            <input required value={props.value} onChange={onChangeTxt} type="text" placeholder={props.valueDesc}/>
         </div>
     )
 }
